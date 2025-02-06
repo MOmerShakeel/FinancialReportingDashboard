@@ -6,6 +6,7 @@ import DashboardIcon from '@mui/icons-material/Dashboard';
 import BarChartIcon from '@mui/icons-material/BarChart';
 import TimelineIcon from '@mui/icons-material/Timeline';
 import LayersIcon from '@mui/icons-material/Layers';
+import LogoutIcon from '@mui/icons-material/Logout';
 import { AppProvider } from '@toolpad/core/AppProvider';
 import { DashboardLayout } from '@toolpad/core/DashboardLayout';
 import { useNavigate } from 'react-router-dom';
@@ -20,12 +21,13 @@ export default function SideBar() {
     const navigate = useNavigate();
 
     const NAVIGATION = [
-        { segment: 'dashboard', title: 'Home', icon: <DashboardIcon />, onClick: () => navigate('/dashboard') },
+        { segment: './dashboard', title: 'Home', icon: <DashboardIcon />, onClick: () => navigate('/dashboard') },
         { kind: 'divider' },
-        { segment: 'financial-summary', title: 'Financial Summary', icon: <LayersIcon />, onClick: () => navigate('/financial-summary') },
-        { segment: 'reserve-categories-expense', title: 'Reserve Category Expense', icon: <BarChartIcon />, onClick: () => navigate('/reserve-categories-expense') },
-        { segment: 'projections', title: 'Projection Charts', icon: <TimelineIcon />, onClick: () => navigate('/projections') },
-        { segment: 'integrations', title: 'Integrations', icon: <LayersIcon />, onClick: () => navigate('/integrations') },
+        { segment: './financial-summary', title: 'Financial Summary', icon: <LayersIcon />, onClick: () => navigate('/financial-summary') },
+        { segment: './reserve-categories-expense', title: 'Reserve Category Expense', icon: <BarChartIcon />, onClick: () => navigate('/reserve-categories-expense') },
+        { segment: './projections', title: 'Projection Charts', icon: <TimelineIcon />, onClick: () => navigate('/projections') },
+        { kind: 'divider' },
+        { segment: './', title: 'Sign Out', icon: <LogoutIcon />, onClick: () => navigate('/') },
     ];
 
     return (

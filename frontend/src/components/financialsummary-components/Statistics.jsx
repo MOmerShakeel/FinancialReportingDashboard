@@ -1,28 +1,24 @@
-import "./Statistics.css"
-function Statistics() {
-    return (
-        <>
-            <div class="ag-format-container">
-                <div class="ag-courses_box">
-                    <div class="ag-courses_item">
-                        <a href="#" class="ag-courses-item_link">
-                            <div class="ag-courses-item_bg"></div>
+// src/components/financialsummary-components/Statistics.js
+import React from "react";
+import "../../pages/FinancialSummary.css"; // reuse the same CSS if needed
 
-                            <div class="ag-courses-item_title">
-                            Total Reserves = ${sumTotalReserves}
-                            </div>
+const Statistics = ({ sumTotalReserves, sumAllocatedFunds, sumUnallocatedFunds }) => {
+  return (
+    <div className="statistic-section">
+      <div className="totalreserves-box">
+        <div className="stat-heading">Total Reserves</div>
+        <div className="stat-value">${sumTotalReserves.toLocaleString()}</div>
+      </div>
+      <div className="allocated-div">
+        <div className="stat-heading">Total Allocated Funds</div>
+        <div className="stat-value">${sumAllocatedFunds.toLocaleString()}</div>
+      </div>
+      <div className="unallocated-div">
+        <div className="stat-heading">Total Unallocated Funds</div>
+        <div className="stat-value">${sumUnallocatedFunds.toLocaleString()}</div>
+      </div>
+    </div>
+  );
+};
 
-                            <div class="ag-courses-item_date-box">
-                                Start:
-                                <span class="ag-courses-item_date">
-                                    04.11.2022
-                                </span>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </>
-    )
-}
 export default Statistics;

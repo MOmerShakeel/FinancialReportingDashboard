@@ -1,8 +1,39 @@
-*{
+* {
     font-family: Raleway, sans-serif !important;
 }
 
-.css-yzjoij img{
+.css-yzjoij img {
     max-height: 30px !important;
     margin: 5px !important;
+}
+
+.header-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 20px;
+}
+
+.heading-db {
+    /* margin: 20px 20px 10px 20px; */
+    font-size: 28px;
+}
+
+.charts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.chart-section-pc {
+    margin: 15px 30px 30px 30px;
+    /* background-color: rgba(255, 255, 255, 0); */
+    border-radius: 15px;
+    box-shadow: 0px 5px 25px #2ec4e976;
+}
+
+
+.heading-graphs {
+font-size: 24px;
 }

@@ -7,7 +7,8 @@ const DateFilter = ({ onFilterChange }) => {
     start: '',
     end: ''
   });
-
+  const [selectedQuarter, setSelectedQuarter] = useState('');
+  
   const months = [
     { value: '1/1/2023', label: 'January' },
     { value: '2/1/2023', label: 'February' },
@@ -59,7 +60,10 @@ const DateFilter = ({ onFilterChange }) => {
   };
 
   const handleQuarterChange = (event) => {
-    const quarter = quarters.find(q => q.value === event.target.value);
+    const quarterValue = event.target.value;
+    setSelectedQuarter(quarterValue);
+
+    const quarter = quarters.find(q => q.value === quarterValue);
     if (quarter) {
       onFilterChange({
         type: 'range',
@@ -143,7 +147,7 @@ const DateFilter = ({ onFilterChange }) => {
         <FormControl sx={{ minWidth: 120 }}>
           <InputLabel>Quarter</InputLabel>
           <Select
-            value={monthRange.start}
+            value={selectedQuarter}
             label="Quarter"
             onChange={handleQuarterChange}
           >

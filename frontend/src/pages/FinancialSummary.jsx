@@ -1,184 +1,174 @@
+// src/pages/FinancialSummary.js
+import React, { useState, useEffect } from "react";
+import Papa from "papaparse";
 import DataTable from "../components/financialsummary-components/DataTable";
-import "./FinancialSummary.css"
-import { BarChart, LineChart } from "@mui/x-charts";
-import FinancialSummaryFile from "../assets/Data-FinancialSummary.csv";
-import { useState, useEffect } from 'react';
-import Papa from 'papaparse';
 import DateFilter from "../components/financialsummary-components/DateFilter";
-
-var monthArray = [];
-var totalReservesArray = [];
-var allocatedReservesArray = [];
-var unallocatedReservesArray = [];
-var monthlyChangeArray = [];
-var sumTotalReserves = 0;
-var sumAllocatedFunds = 0;
-var sumUnallocatedFunds = 0;
+import Statistics from "../components/financialsummary-components/Statistics";
+import LineGraph from "../components/financialsummary-components/LineGraph";
+import BarGraph from "../components/financialsummary-components/BarGraph";
+import FinancialSummaryFile from "../assets/Data-FinancialSummary.csv";
+import "./FinancialSummary.css";
+import BarChart from "@mui/x-charts/BarChart";
+import LineChart from "@mui/x-charts/LineChart";
 
 
 function FinancialSummary() {
     const [rows, setRows] = useState([]);
     const [columns, setColumns] = useState([]);
-
     const [filteredData, setFilteredData] = useState(null);
+    const [sums, setSums] = useState({
+        sumTotalReserves: 0,
+        sumAllocatedFunds: 0,
+        sumUnallocatedFunds: 0,
+    });
 
+    const [allData, setAllData] = useState({
+        months: [],
+        totalReserves: [],
+        allocatedReserves: [],
+        unallocatedReserves: [],
+        monthlyChange: [],
+    });
+
+
+    // These arrays will temporarily store the CSV data
+    let monthArray = [];
+    let totalReservesArray = [];
+    let allocatedReservesArray = [];
+    let unallocatedReservesArray = [];
+    let monthlyChangeArray = [];
 
     useEffect(() => {
         Papa.parse(FinancialSummaryFile, {
             download: true,
             header: true,
             complete: (results) => {
-                // Generate columns dynamically
-                const generatedColumns = Object.keys(results.data[0]).map(field => ({
+                const first12Rows = results.data.slice(0, 12);
+                const monthArray = [];
+                const totalReservesArray = [];
+                const allocatedReservesArray = [];
+                const unallocatedReservesArray = [];
+                const monthlyChangeArray = [];
+
+                let sumTotalReserves = 0;
+                let sumAllocatedFunds = 0;
+                let sumUnallocatedFunds = 0;
+
+                // Dynamically generate the table columns
+                const generatedColumns = Object.keys(first12Rows[0]).map((field) => ({
                     field,
                     headerName: field.charAt(0).toUpperCase() + field.slice(1),
-                    flex: 1
+                    flex: 1,
                 }));
 
-                //storing incoming csv table values to arrays and sum variables defined globally
-                const dataObject = results;
-                for (var i = 0; i < 12; i++) {
-                    monthArray.push(dataObject.data[i].Month);
-                    totalReservesArray.push(dataObject.data[i]["Total Reserves"]);
-                    allocatedReservesArray.push(dataObject.data[i]["Allocated Funds"]);
-                    unallocatedReservesArray.push(dataObject.data[i]["Unallocated Funds"]);
-                    monthlyChangeArray.push(dataObject.data[i]["Monthly Change (%)"]);
+                // Loop through each row in the CSV data
+                first12Rows.forEach((dataRow) => {
+                    monthArray.push(dataRow.Month); // ← Make sure this format matches DateFilter values!
+                    totalReservesArray.push(dataRow["Total Reserves"]);
+                    allocatedReservesArray.push(dataRow["Allocated Funds"]);
+                    unallocatedReservesArray.push(dataRow["Unallocated Funds"]);
+                    monthlyChangeArray.push(dataRow["Monthly Change (%)"]);
 
-                    var tempTR = parseInt(dataObject.data[i]["Total Reserves"]);
-                    sumTotalReserves = sumTotalReserves + tempTR;
-                    // console.log("STR " + sumTotalReserves)
+                    sumTotalReserves += parseInt(dataRow["Total Reserves"], 10);
+                    sumAllocatedFunds += parseInt(dataRow["Allocated Funds"], 10);
+                    sumUnallocatedFunds += parseInt(dataRow["Unallocated Funds"], 10);
+                });
 
-                    var tempAF = parseInt(dataObject.data[i]["Allocated Funds"]);
-                    sumAllocatedFunds = sumAllocatedFunds + tempAF;
-                    // console.log("SAF " + sumAllocatedFunds);
+                const completeData = {
+                    months: monthArray,
+                    totalReserves: totalReservesArray,
+                    allocatedReserves: allocatedReservesArray,
+                    unallocatedReserves: unallocatedReservesArray,
+                    monthlyChange: monthlyChangeArray,
+                };
 
-                    var tempUF = parseInt(dataObject.data[i]["Unallocated Funds"]);
-                    sumUnallocatedFunds = sumUnallocatedFunds + tempUF;
-                    // console.log("SUF " + sumUnallocatedFunds);
-                }
-                // console.log(allocatedReservesArray);
-                // console.log(sumTotalReserves);
+                setAllData(completeData);
+                setFilteredData(completeData);
 
-                //setting inital values
+                // Store the sum values in state
+                setSums({
+                    sumTotalReserves,
+                    sumAllocatedFunds,
+                    sumUnallocatedFunds,
+                });
+
+                // Set the initial filtered data using the complete arrays
                 setFilteredData({
                     months: monthArray,
                     totalReserves: totalReservesArray,
                     allocatedReserves: allocatedReservesArray,
                     unallocatedReserves: unallocatedReservesArray,
-                    monthlyChange: monthlyChangeArray
+                    monthlyChange: monthlyChangeArray,
                 });
 
-                // Adding unique id to rows
-                const rowsWithId = results.data.map((row, index) => ({
+                // Add a unique id to each row for the DataTable
+                const rowsWithId = first12Rows.map((row, index) => ({
                     ...row,
-                    id: index
-                }));
-                // console.log(rowsWithId);
+                    id: index,
+                  }));
 
                 setColumns(generatedColumns);
                 setRows(rowsWithId);
-            }
+            },
         });
     }, []);
 
     const handleFilterChange = (filterParams) => {
-        let startDate, endDate;
-
-        if (filterParams.type === 'all') {
-            setFilteredData({
-                months: monthArray,
-                totalReserves: totalReservesArray,
-                allocatedReserves: allocatedReservesArray,
-                unallocatedReserves: unallocatedReservesArray,
-                monthlyChange: monthlyChangeArray
-            });
-            return;
+        // If 'all' is selected, reset to the full data set
+        if (filterParams.type === "all") {
+          setFilteredData(allData);
+          return;
         }
-
-        startDate = new Date(filterParams.start);
-        endDate = new Date(filterParams.end);
-
-        const filteredIndices = monthArray.map((month, index) => {
+        
+        // Parse the start and end dates coming from the DateFilter.
+        const startDate = new Date(filterParams.start);
+        const endDate = new Date(filterParams.end);
+        
+        // Debug: log the filter parameters and parsed dates
+        console.log("Filtering from", startDate, "to", endDate);
+        
+        // Filter using the months from allData
+        const filteredIndices = allData.months
+          .map((month, index) => {
             const currentDate = new Date(month);
-            return (currentDate >= startDate && currentDate <= endDate) ? index : -1;
-        }).filter(index => index !== -1);
-
+            return currentDate >= startDate && currentDate <= endDate ? index : -1;
+          })
+          .filter((index) => index !== -1); 
+        
+        // Build the filtered dataset
         setFilteredData({
-            months: filteredIndices.map(i => monthArray[i]),
-            totalReserves: filteredIndices.map(i => totalReservesArray[i]),
-            allocatedReserves: filteredIndices.map(i => allocatedReservesArray[i]),
-            unallocatedReserves: filteredIndices.map(i => unallocatedReservesArray[i]),
-            monthlyChange: filteredIndices.map(i => monthlyChangeArray[i])
+          months: filteredIndices.map((i) => allData.months[i]),
+          totalReserves: filteredIndices.map((i) => allData.totalReserves[i]),
+          allocatedReserves: filteredIndices.map((i) => allData.allocatedReserves[i]),
+          unallocatedReserves: filteredIndices.map((i) => allData.unallocatedReserves[i]),
+          monthlyChange: filteredIndices.map((i) => allData.monthlyChange[i]),
         });
-    };
+      };
+    //   console.log("Statistics:", Statistics);
+    // console.log("LineGraph:", LineGraph);
+    // console.log("BarGraph:", BarGraph);
+    // console.log("DataTable:", DataTable);
+    // console.log("DateFilter:", DateFilter);
 
     return (
-        <>
+        <div>
             <div className="header-section">
                 <h1 className="heading-FS">Financial Summary</h1>
                 <DateFilter onFilterChange={handleFilterChange} />
             </div>
-            <div className="statistic-section">
-                <div className="totalreserves-box">
-                    <div className="stat-heading">Total Reserves</div>
-                    <div className="stat-value">${sumTotalReserves.toLocaleString()}</div>
-                </div>
-                <div className="allocated-div">
-                    <div className="stat-heading">Total Allocated Funds</div>
-                    <div className="stat-value">${sumAllocatedFunds.toLocaleString()}</div>
-                </div>
-                <div className="unallocated-div">
-                    <div className="stat-heading">Total Unallocated Funds</div>
-                    <div className="stat-value">${sumUnallocatedFunds.toLocaleString()}</div>
-                </div>
-                {/* <Statistics /> */}
-            </div>
             {filteredData && (
                 <>
-                    <div className="linegraph-section">
-                        <h2 className="heading-graphs">Reserve Allocation Monthly Change (%)</h2>
-                        <LineChart
-                            sx={{ padding: "30px 10px", width: "100%" }}
-                            xAxis={[{
-                                data: filteredData.months,
-                                scaleType: "band",
-                                label: "Months"
-                            }]}
-                            series={[
-                                {
-                                    data: filteredData.monthlyChange,
-                                    area: false,
-                                    label: "Monthly Change (%)"
-                                },
-                            ]}
-                            // width={900}
-                            height={400}
-                            grid={{ vertical: true, horizontal: true }}
-                        />
-
-                    </div>
-                    <div className="barchart-section">
-                        <h2 className="heading-graphs">Funds Allocation across the Year</h2>
-                        <BarChart
-                            sx={{ padding: "30px 10px", width: "100%" }}
-                            xAxis={[
-                                {
-                                    scaleType: 'band',
-                                    data: filteredData.months, //months - xaxis
-                                    categoryGapRatio: 0.3,
-                                    barGapRatio: 0.1,
-                                    label: "Months"
-                                }]}
-                            series={[
-                                { data: filteredData.totalReserves, label: "Total Reserves($USD)",valueFormatter: (value) => `$${value.toLocaleString()}` },
-                                { data: filteredData.allocatedReserves, label: "Allocated Funds($USD)",valueFormatter: (value) => `$${value.toLocaleString()}` },
-                                { data: filteredData.unallocatedReserves, label: "Unallocated Funds($USD)",valueFormatter: (value) => `$${value.toLocaleString()}` }]} //y-axis 
-                            height={400}
-                        /></div>
+                    <Statistics
+                        sumTotalReserves={sums.sumTotalReserves}
+                        sumAllocatedFunds={sums.sumAllocatedFunds}
+                        sumUnallocatedFunds={sums.sumUnallocatedFunds}
+                    />
+                    <LineGraph filteredData={filteredData} />
+                    <BarGraph filteredData={filteredData} />
                 </>
             )}
-            <DataTable />
-        </>
+            <DataTable rows={rows} columns={columns} />
+        </div>
     );
 }
 

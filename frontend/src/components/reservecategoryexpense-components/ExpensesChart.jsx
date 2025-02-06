@@ -177,7 +177,7 @@ function ExpensesChart() {
     return (
         <>
             <div className="header-section">
-                <h1>Reserve Categories Expenses</h1>
+                <h1 className='heading-rce'>Reserve Categories Expenses</h1>
                 <DateFilter onFilterChange={handleFilterChange} />
             </div>
             {chartData.dataset.length > 0 ? (

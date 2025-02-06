@@ -45,12 +45,12 @@ function Projections() {
                 const reserves = [];
                 const rates = [];
 
-                results.data.slice(0, 12).forEach(item => {
+                results.data.slice(0, 100).forEach(item => {
                     months.push(item.Month);
                     reserves.push(Number(item["Projected Reserves"]));
                     rates.push(Number(item["Growth Rate"]));
                 });
-
+                
                 setMonthArray(months);
                 setProjectedReservesArray(reserves);
                 setGrowthRateArray(rates);
