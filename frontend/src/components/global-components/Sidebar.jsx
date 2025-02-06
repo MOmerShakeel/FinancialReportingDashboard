@@ -4,6 +4,7 @@ import Typography from '@mui/material/Typography';
 import { createTheme } from '@mui/material/styles';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import BarChartIcon from '@mui/icons-material/BarChart';
+import TimelineIcon from '@mui/icons-material/Timeline';
 import LayersIcon from '@mui/icons-material/Layers';
 import { AppProvider } from '@toolpad/core/AppProvider';
 import { DashboardLayout } from '@toolpad/core/DashboardLayout';
@@ -13,6 +14,7 @@ import { Routes, Route } from "react-router-dom"; // ✅ Import Routes here
 import Dashboard from '../../pages/Dashboard';
 import FinancialSummary from '../../pages/FinancialSummary';
 import ReserveCategoryExpense from '../../pages/ReserveCategoryExpense';
+import Projections from '../../pages/Projections';
 
 export default function SideBar() {
     const navigate = useNavigate();
@@ -20,8 +22,9 @@ export default function SideBar() {
     const NAVIGATION = [
         { segment: 'dashboard', title: 'Home', icon: <DashboardIcon />, onClick: () => navigate('/dashboard') },
         { kind: 'divider' },
-        { segment: 'financial-summary', title: 'Financial Summary', icon: <BarChartIcon />, onClick: () => navigate('/financial-summary') },
+        { segment: 'financial-summary', title: 'Financial Summary', icon: <LayersIcon />, onClick: () => navigate('/financial-summary') },
         { segment: 'reserve-categories-expense', title: 'Reserve Category Expense', icon: <BarChartIcon />, onClick: () => navigate('/reserve-categories-expense') },
+        { segment: 'projections', title: 'Projection Charts', icon: <TimelineIcon />, onClick: () => navigate('/projections') },
         { segment: 'integrations', title: 'Integrations', icon: <LayersIcon />, onClick: () => navigate('/integrations') },
     ];
 
@@ -44,6 +47,7 @@ export default function SideBar() {
                     <Route path="/dashboard" element={<Dashboard />} />
                     <Route path="/financial-summary" element={<FinancialSummary />} />
                     <Route path="/reserve-categories-expense" element={<ReserveCategoryExpense />} />
+                    <Route path="/projections" element={<Projections />} />
                 </Routes>
             </DashboardLayout>
         </AppProvider>

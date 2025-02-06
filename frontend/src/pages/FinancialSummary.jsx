@@ -1,14 +1,9 @@
 import DataTable from "../components/financialsummary-components/DataTable";
-import SideBar from "../components/global-components/Sidebar";
 import "./FinancialSummary.css"
-import { DashboardLayout } from "@toolpad/core";
-import { Box } from "@mui/material";
 import { BarChart, LineChart } from "@mui/x-charts";
 import FinancialSummaryFile from "../assets/Data-FinancialSummary.csv";
 import { useState, useEffect } from 'react';
 import Papa from 'papaparse';
-import { Padding } from "@mui/icons-material";
-import Statistics from "../components/financialsummary-components/Statistics";
 import DateFilter from "../components/financialsummary-components/DateFilter";
 
 var monthArray = [];

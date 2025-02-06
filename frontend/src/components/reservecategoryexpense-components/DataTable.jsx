@@ -1,6 +1,6 @@
 import { DataGrid } from '@mui/x-data-grid';
 import Papa from 'papaparse';
-import ReserveCategoryFile from "../../assets/Data-ReserveCategoriesExpense .csv";
+import ReserveCategoryFile from "../../assets/Data-ReserveCategoriesExpense.csv";
 import { useState, useEffect } from 'react';
 
 function DataTable (){
