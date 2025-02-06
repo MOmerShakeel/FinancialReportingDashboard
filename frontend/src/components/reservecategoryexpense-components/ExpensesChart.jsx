@@ -182,22 +182,7 @@ function ExpensesChart() {
             </div>
             {chartData.dataset.length > 0 ? (
                 <>
-                    <div className='chart-section'>
-                        <h2>Individual Categories Expenses over the period</h2>
-                        <BarChart
-                            dataset={chartData.dataset}
-                            xAxis={[{
-                                scaleType: 'band',
-                                dataKey: 'month',
-                                tickLabelStyle: {
-                                    fontSize: 12
-                                }
-                            }]}
-                            series={seriesConfig}
-                            {...chartSetting}
-                        />
-                    </div>
-                    <div className='chart-section'>
+                    <div className='chart-section-pc'>
                         <h2>Category Utilization(%) Over the Year</h2>
                         <PieChart
                             series={[
@@ -213,10 +198,26 @@ function ExpensesChart() {
                                     cy: 150,
                                 }
                             ]}
-                            width={400}
+                            width={500}
                             height={300}
                         />
                     </div>
+                    <div className='chart-section'>
+                        <h2>Individual Categories Expenses over the period</h2>
+                        <BarChart
+                            dataset={chartData.dataset}
+                            xAxis={[{
+                                scaleType: 'band',
+                                dataKey: 'month',
+                                tickLabelStyle: {
+                                    fontSize: 12
+                                }
+                            }]}
+                            series={seriesConfig}
+                            {...chartSetting}
+                        />
+                    </div>
+
                 </>
             ) : (
                 <div>No data to display</div>

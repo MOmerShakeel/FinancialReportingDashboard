@@ -107,7 +107,7 @@ function Projections() {
     return (
         <>
             <div className="header-section">
-                <h1 className="heading-pc">Financial Summary</h1>
+                <h1 className="heading-pc">Projection Charts</h1>
                 <DateFilter
                     months={monthArray}
                     selectedType={filters.type}
