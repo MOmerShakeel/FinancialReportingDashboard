@@ -7,8 +7,8 @@
 
 <h2>How to run:</h2>
 <ul>
-<li>1) Download zip file of the project or clone the project</li>
-<li>2) Run "npm install" to get all dependencies.</li>
-<li>3) Navigate to the frontend folder and ensure all dependencies are installed. Build folder can also be found here.</li>
-<li>4) Run "npm start" on the frontend folder to run the dashboard locally. </li>
+<li>Download zip file of the project or clone the project</li>
+<li>Run "npm install" to get all dependencies.</li>
+<li>Navigate to the frontend folder and ensure all dependencies are installed. Build folder can also be found here.</li>
+<li>Run "npm start" on the frontend folder to run the dashboard locally. </li>
 </ul>
