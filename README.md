@@ -10,5 +10,6 @@
 <li>Download zip file of the project or clone the project</li>
 <li>Run "npm install" to get all dependencies.</li>
 <li>Navigate to the frontend folder and ensure all dependencies are installed. Build folder can also be found here.</li>
+<li>Make sure that you have the latest react version installed. Install it with "npm install react@latest react-dom@latest".</li>
 <li>Run "npm start" on the frontend folder to run the dashboard locally. </li>
 </ul>
