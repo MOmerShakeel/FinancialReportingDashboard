@@ -5,7 +5,6 @@ import Papa from 'papaparse';
 import ExpensesFile from '../../assets/Data-ReserveCategoriesExpense.csv';
 import DateFilter from './DateFilter';
 import "./ExpensesChart.css"
-import CategoryFilter from "./CategoryFilter";
 
 const chartSetting = {
     yAxis: [
@@ -34,7 +33,6 @@ function ExpensesChart() {
     const [pieChartData, setPieChartData] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
-    const [selectedCategory, setSelectedCategory] = useState("all");
 
     const processData = (data) => {
         const monthlyData = {};
@@ -130,31 +128,34 @@ function ExpensesChart() {
     }, []);
 
     const handleFilterChange = (filterParams) => {
-        let filteredData = originalData;
-
-        if (filterParams.date) {
-            if (filterParams.type === "individual") {
-                filteredData = filteredData.filter(row => row.Month.startsWith(filterParams.start));
-            } else if (filterParams.type === "range" || filterParams.type === "quarterly") {
-                filteredData = filteredData.filter(row => {
-                    const rowDate = new Date(row.Month);
-                    const startDate = new Date(filterParams.start);
-                    const endDate = new Date(filterParams.end);
-                    return rowDate >= startDate && rowDate <= endDate;
-                });
-            }
+        if (filterParams.type === 'all') {
+            processData(originalData);
+            return;
         }
 
-        if (selectedCategory !== "all") {
-            filteredData = filteredData.filter(row => row.Category === selectedCategory);
+        let filteredData = originalData;
+
+        if (filterParams.type === 'individual') {
+            filteredData = originalData.filter(row =>
+                row.Month.startsWith(filterParams.start)
+            );
+        } else if (filterParams.type === 'range') {
+            filteredData = originalData.filter(row => {
+                const rowDate = new Date(row.Month);
+                const startDate = new Date(filterParams.start);
+                const endDate = new Date(filterParams.end);
+                return rowDate >= startDate && rowDate <= endDate;
+            });
+        } else if (filterParams.type === 'quarterly') {
+            filteredData = originalData.filter(row => {
+                const rowDate = new Date(row.Month);
+                const startDate = new Date(filterParams.start);
+                const endDate = new Date(filterParams.end);
+                return rowDate >= startDate && rowDate <= endDate;
+            });
         }
 
         processData(filteredData);
-    };
-
-    const handleCategoryChange = (category) => {
-        setSelectedCategory(category);
-        handleFilterChange({ date: true });
     };
 
     const seriesConfig = chartData.categories
@@ -177,11 +178,6 @@ function ExpensesChart() {
         <>
             <div className="header-section">
                 <h1 className='heading-rce'>Reserve Categories Expenses</h1>
-                <CategoryFilter
-                    categories={Array.from(chartData.categories)}
-                    selectedCategory={selectedCategory}
-                    onFilterChange={handleCategoryChange}
-                />
                 <DateFilter onFilterChange={handleFilterChange} />
             </div>
             {chartData.dataset.length > 0 ? (
