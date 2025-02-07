@@ -91,10 +91,10 @@ const ProjectionsLineChart = ({ dateFilter }) => {
 
     return (
         <div className='chart-section-pc'>
-            <h2>Future Projection of Reserves (Yearly)</h2>
+            <h2 className='heading-graphs'>Future Projection of Reserves (Yearly)</h2>
             <div style={{ width: "100%", overflowX: "auto" }}>
                 <LineChart
-                    sx={{ padding: "30px 10px", width: "100%" }}
+                    sx={{ padding: "20px 10px 10px 10px", width: "100%" }}
                     height={300}
                     series={[
                         {

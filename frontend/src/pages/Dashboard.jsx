@@ -142,9 +142,9 @@ const Dashboard = () => {
             sumUnallocatedFunds={sums.sumUnallocatedFunds}
           />
           <div className="charts-grid">
-            <BarGraph filteredData={filteredData} />
             <CategoryExpensesPieChart dateFilter={currentFilter} />
             <LineGraph filteredData={filteredData} />
+            <BarGraph filteredData={filteredData} />
             <ProjectionsLineChart dateFilter={currentFilter} />
           </div>
         </>

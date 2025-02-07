@@ -4,7 +4,7 @@ import { LineChart } from "@mui/x-charts/LineChart";
 
 const LineGraph = ({ filteredData }) => {
   return (
-    <div className="linegraph-section">
+    <div className="chart-section-pc">
       <h2 className="heading-graphs">Reserve Allocation Monthly Change (%)</h2>
       <LineChart
         sx={{ padding: "30px 10px", width: "100%" }}

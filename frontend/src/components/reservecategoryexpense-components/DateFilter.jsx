@@ -83,7 +83,6 @@ const DateFilter = ({ onFilterChange }) => {
           onChange={handleFilterTypeChange}
         >
           <MenuItem value="all">All Time</MenuItem>
-          <MenuItem value="month">Single Month</MenuItem>
           <MenuItem value="range">Month Range</MenuItem>
           <MenuItem value="quarter">Quarterly</MenuItem>
         </Select>

@@ -4,7 +4,7 @@ import { BarChart } from "@mui/x-charts/BarChart";
 
 const BarGraph = ({ filteredData }) => {
   return (
-    <div className="barchart-section">
+    <div className="chart-section-pc">
       <h2 className="heading-graphs">Funds Allocation across the Year</h2>
       <BarChart
         sx={{ padding: "30px 10px", width: "100%" }}

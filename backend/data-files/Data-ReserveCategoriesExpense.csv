@@ -1,0 +1,101 @@
+Month,Date,Category,Amount,% of total Utilization,Description
+1/1/2023,1/3/2023,IT,6410,14.16199019,Software Upgrade
+1/1/2023,1/8/2023,Emergency,9766,21.57659847,Investment
+1/1/2023,1/11/2023,Emergency,5347,11.81344174,Emergency Fund
+1/1/2023,1/15/2023,Operations,7461,16.48402634,Emergency Fund
+1/1/2023,1/17/2023,IT,5113,11.29645177,Marketing Campaign
+1/1/2023,1/19/2023,Emergency,903,1.995051036,Software Upgrade
+1/1/2023,1/22/2023,Operations,3269,7.222394061,Marketing Campaign
+1/1/2023,1/22/2023,Operations,4104,9.067208696,Office Rent
+1/1/2023,1/26/2023,Emergency,2889,6.3828377,Emergency Fund
+2/1/2023,2/3/2023,IT,1068,2.604814517,Marketing Campaign
+2/1/2023,2/6/2023,IT,9497,23.16284969,Emergency Fund
+2/1/2023,2/20/2023,Emergency,9554,23.30187069,Emergency Fund
+2/1/2023,2/21/2023,Operations,7382,18.00443892,Emergency Fund
+2/1/2023,2/22/2023,Investments,8973,21.88483208,Marketing Campaign
+2/1/2023,2/23/2023,Emergency,2078,5.068169069,Investment
+2/1/2023,2/24/2023,Marketing,2449,5.973025048,Office Rent
+3/1/2023,3/2/2023,IT,8657,11.74722501,Investment
+3/1/2023,3/3/2023,IT,9873,13.3972915,Marketing Campaign
+3/1/2023,3/9/2023,Emergency,154,0.208972237,Marketing Campaign
+3/1/2023,3/10/2023,Investments,5944,8.065785546,Office Rent
+3/1/2023,3/13/2023,Investments,1884,2.556517491,Software Upgrade
+3/1/2023,3/13/2023,IT,4849,6.579911526,Emergency Fund
+3/1/2023,3/15/2023,IT,2646,3.590522973,Software Upgrade
+3/1/2023,3/17/2023,Emergency,8113,11.00903737,Emergency Fund
+3/1/2023,3/19/2023,Operations,2541,3.448041903,Office Rent
+3/1/2023,3/20/2023,Operations,7218,9.794555866,Marketing Campaign
+3/1/2023,3/22/2023,Operations,5437,7.37780552,Investment
+3/1/2023,3/23/2023,Marketing,5782,7.845957608,Emergency Fund
+3/1/2023,3/29/2023,IT,9632,13.07026352,Office Rent
+3/1/2023,3/30/2023,Emergency,964,1.308111922,Marketing Campaign
+4/1/2023,4/11/2023,IT,725,1.973863327,Emergency Fund
+4/1/2023,4/14/2023,Operations,5055,13.76259189,Software Upgrade
+4/1/2023,4/17/2023,Marketing,3136,8.537979853,Investment
+4/1/2023,4/18/2023,IT,6138,16.71113531,Investment
+4/1/2023,4/20/2023,Emergency,3770,10.2640893,Office Rent
+4/1/2023,4/21/2023,IT,5536,15.07214811,Investment
+4/1/2023,4/27/2023,Emergency,2506,6.822760686,Emergency Fund
+4/1/2023,4/28/2023,Emergency,9864,26.85543153,Office Rent
+5/1/2023,5/1/2023,IT,9636,17.56342957,Investment
+5/1/2023,5/4/2023,IT,459,0.836614173,Investment
+5/1/2023,5/12/2023,IT,7658,13.95815106,Emergency Fund
+5/1/2023,5/13/2023,Emergency,8021,14.61978711,Office Rent
+5/1/2023,5/17/2023,Investments,5271,9.607392826,Marketing Campaign
+5/1/2023,5/20/2023,Marketing,7810,14.23519977,Software Upgrade
+5/1/2023,5/21/2023,Marketing,2395,4.365339749,Investment
+5/1/2023,5/30/2023,Emergency,6522,11.88757655,Marketing Campaign
+5/1/2023,5/30/2023,IT,7092,12.92650919,Office Rent
+6/1/2023,6/13/2023,Marketing,9034,46.04719914,Emergency Fund
+6/1/2023,6/13/2023,Investments,6047,30.82216219,Investment
+6/1/2023,6/21/2023,Operations,3199,16.3056221,Emergency Fund
+6/1/2023,6/27/2023,Marketing,1339,6.825016566,Software Upgrade
+7/1/2023,7/2/2023,Marketing,1126,3.521170805,Investment
+7/1/2023,7/2/2023,Investments,1774,5.54756395,Investment
+7/1/2023,7/8/2023,IT,2629,8.221277128,Marketing Campaign
+7/1/2023,7/8/2023,IT,3602,11.263994,Software Upgrade
+7/1/2023,7/17/2023,Emergency,4336,13.55932203,Emergency Fund
+7/1/2023,7/18/2023,Emergency,843,2.636187379,Software Upgrade
+7/1/2023,7/21/2023,Operations,8218,25.69891801,Investment
+7/1/2023,7/22/2023,IT,4392,13.73444243,Software Upgrade
+7/1/2023,7/31/2023,Investments,5058,15.81712427,Software Upgrade
+8/1/2023,8/2/2023,IT,8224,17.91721133,Office Rent
+8/1/2023,8/3/2023,Operations,9938,21.65141612,Investment
+8/1/2023,8/10/2023,Marketing,3042,6.62745098,Software Upgrade
+8/1/2023,8/13/2023,Marketing,345,0.751633987,Emergency Fund
+8/1/2023,8/15/2023,Investments,7395,16.11111111,Office Rent
+8/1/2023,8/19/2023,Marketing,4608,10.03921569,Investment
+8/1/2023,8/22/2023,Emergency,9028,19.66884532,Marketing Campaign
+8/1/2023,8/27/2023,Emergency,3320,7.233115468,Emergency Fund
+9/1/2023,9/2/2023,Investments,1860,3.161759706,Marketing Campaign
+9/1/2023,9/5/2023,Marketing,8561,14.552594,Marketing Campaign
+9/1/2023,9/7/2023,Investments,2484,4.222479092,Investment
+9/1/2023,9/7/2023,Investments,3065,5.210104032,Emergency Fund
+9/1/2023,9/7/2023,Investments,5823,9.898347726,Emergency Fund
+9/1/2023,9/8/2023,Operations,1990,3.382742912,Marketing Campaign
+9/1/2023,9/13/2023,Operations,6472,11.00156388,Office Rent
+9/1/2023,9/14/2023,Operations,5198,8.835928469,Software Upgrade
+9/1/2023,9/15/2023,Operations,2269,3.857006867,Emergency Fund
+9/1/2023,9/18/2023,Emergency,1146,1.948051948,Emergency Fund
+9/1/2023,9/18/2023,Operations,1937,3.292649759,Marketing Campaign
+9/1/2023,9/22/2023,Emergency,8849,15.0421568,Marketing Campaign
+9/1/2023,9/24/2023,Operations,440,0.747943156,Software Upgrade
+9/1/2023,9/27/2023,Operations,8734,14.84667165,Software Upgrade
+10/1/2023,10/10/2023,IT,7138,44.46243927,Emergency Fund
+10/1/2023,10/13/2023,Marketing,8916,24.09990269,Office Rent
+11/1/2023,11/1/2023,Operations,850,2.297545681,Office Rent
+11/1/2023,11/5/2023,Operations,9195,24.85403827,Marketing Campaign
+11/1/2023,11/11/2023,Marketing,2318,6.265542221,Investment
+11/1/2023,11/15/2023,Investments,9985,26.98940426,Emergency Fund
+11/1/2023,11/20/2023,Investments,4198,11.34717267,Marketing Campaign
+11/1/2023,11/23/2023,Marketing,6232,16.84506433,Investment
+11/1/2023,11/30/2023,IT,4218,11.40123257,Investment
+12/1/2023,12/2/2023,Marketing,5113,11.94096079,Office Rent
+12/1/2023,12/2/2023,Operations,3705,8.652700904,Software Upgrade
+12/1/2023,12/4/2023,IT,3769,8.802167262,Office Rent
+12/1/2023,12/5/2023,IT,5752,13.43328896,Investment
+12/1/2023,12/6/2023,Operations,9256,21.61657208,Office Rent
+12/1/2023,12/9/2023,Investments,2533,5.915598216,Emergency Fund
+12/1/2023,12/15/2023,IT,1524,3.559167659,Office Rent
+12/1/2023,12/29/2023,Marketing,1981,4.626450875,Office Rent
+12/1/2023,12/31/2023,IT,9186,21.45309325,Office Rent

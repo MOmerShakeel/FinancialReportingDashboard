@@ -182,8 +182,8 @@ function ExpensesChart() {
             </div>
             {chartData.dataset.length > 0 ? (
                 <>
-                    <div className='chart-section-pc'>
-                        <h2>Category Utilization(%) Over the Year</h2>
+                    <div className='chart-section-pc-rce'>
+                        <h2 className='heading-graphs'>Category Utilization(%) Over the Year</h2>
                         <PieChart
                             series={[
                                 {
@@ -202,8 +202,8 @@ function ExpensesChart() {
                             height={300}
                         />
                     </div>
-                    <div className='chart-section'>
-                        <h2>Individual Categories Expenses over the period</h2>
+                    <div className='chart-section-pc-rce'>
+                        <h2 className='heading-graphs'>Individual Categories Expenses over the period</h2>
                         <BarChart
                             dataset={chartData.dataset}
                             xAxis={[{
