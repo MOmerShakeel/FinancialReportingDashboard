@@ -1,28 +1,15 @@
-const CategoryFilter = ({ categories, selectedCategories, onCategoryChange }) => {
-    const handleChange = (category) => {
-        if (selectedCategories.includes(category)) {
-            onCategoryChange(selectedCategories.filter(c => c !== category));
-        } else {
-            onCategoryChange([...selectedCategories, category]);
-        }
-    };
+import React from "react";
 
+const CategoryFilter = ({ categories, selectedCategory, onFilterChange }) => {
     return (
-        <div className="category-filter" style={{ marginBottom: '20px' }}>
-            <h3>Filter by Category:</h3>
-            <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
-                {Array.from(categories).map((category) => (
-                    <label key={category} style={{ display: 'inline-flex', alignItems: 'center', gap: '5px' }}>
-                        <input
-                            type="checkbox"
-                            checked={selectedCategories.includes(category)}
-                            onChange={() => handleChange(category)}
-                        />
-                        {category}
-                    </label>
-                ))}
-            </div>
-        </div>
+        <select value={selectedCategory} onChange={(e) => onFilterChange(e.target.value)}>
+            <option value="all">All Categories</option>
+            {categories.map((category) => (
+                <option key={category} value={category}>
+                    {category}
+                </option>
+            ))}
+        </select>
     );
 };
 
